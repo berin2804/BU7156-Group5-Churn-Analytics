@@ -1,0 +1,25 @@
+### Note
+* Standardization/Encoding: NOT performed in this file to maintain data readability for EDA.
+* Next Steps: For ML pipeline, please apply One-Hot Encoding to [country, category, gender] and Scaling if using linear models.
+
+# Data Preparation Summary - E-Commerce Churn Analysis
+
+### 1. Assess Dataset & Cleaning
+* Missing Values: NA
+* Duplicates: NA
+* Date Formatting: Converted 'signup_date', 'last_purchase_date', and 'order_date' to standard datetime format.
+
+### 2. Feature Engineering (New Variables Created)
+* Order_amount: Calculated as unit_price x quantity
+* Recency (recency_days): Calculated as days since the last purchase to quantify customer engagement.
+* Tenure (tenure_days): Total duration from signup to the current analysis date.
+* Monetary (monetary): Derived total spending per customer (Unit Price x Quantity).
+* Avg_Order_Value: Average spending per transaction.
+* Purchase_Intensity: Ratio of purchase frequency to tenure to identify high-activity users.
+* Inactivity_Ratio: Proportion of customer life-cycle spent without purchasing.
+
+### 3. Outlier 
+* Numerical Outliers: Identified in 'unit_price', 'avg_order_value', and 'purchase_intensity'.
+* Strategic Retention: These outliers have been RETAINED in the cleaned file to ensure the model captures the 40% revenue risk tied to high-value/at-risk segments. 
+* Modeling: Tree-based models are able to handle these variances.
+
